@@ -1,0 +1,17 @@
+table {
+  width: 90%;
+  background-color: #ccc;
+  margin: 30px 0;
+  border-collapse: collapse;
+  text-align: center;
+}
+thead {
+  background-color: rgb(3, 82, 3);
+}
+
+thead th {
+  color: #fff;
+}
+table tbody td {
+  padding: 10px 0;
+}
