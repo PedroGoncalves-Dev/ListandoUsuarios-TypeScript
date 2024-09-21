@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ESNext", // Mantém consistência com o tsconfig.json principal
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"], // Atualizado para ESNext
     "module": "ESNext",
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler", // Deixe como está se estiver usando um bundler como Vite/Webpack
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
