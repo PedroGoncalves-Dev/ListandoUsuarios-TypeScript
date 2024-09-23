@@ -2,8 +2,19 @@ import styles from "./clientes.module.css";
 import { Usuario } from "../../interfaces/usuarios";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
+import { Button } from "@/components/ui/button";
+
 import api from "../../axios/baseUrl";
 import { useEffect } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
 
 // interface ResApi {
 //   sucesso: boolean;
@@ -58,7 +69,26 @@ const Clientes: React.FC = () => {
                   <td>{usu.nome_usu}</td>
                   <td>{usu.cpf ?? "nao fornecido"}</td>
                   <td>{usu.email ?? "nao fornecido"}</td>
-                  <td> ações</td>
+                  <td>
+                    {" "}
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button className={styles.acoes}>Ações</button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className={styles.menuContent}>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuGroup>
+                          <DropdownMenuItem className={styles.item}>
+                            <span>Editar</span>
+                          </DropdownMenuItem>
+
+                          <DropdownMenuItem className={styles.item}>
+                            <span>Inativar</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </td>
                 </tr>
               ))}
           </tbody>

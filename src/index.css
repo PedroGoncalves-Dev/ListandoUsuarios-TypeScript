@@ -72,3 +72,9 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

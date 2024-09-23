@@ -5,6 +5,10 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"], // Atualizado para ESNext
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler", // Deixe como está se estiver usando um bundler como Vite/Webpack
