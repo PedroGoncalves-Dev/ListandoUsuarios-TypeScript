@@ -1,8 +1,9 @@
 import styles from "./clientes.module.css";
 import { Usuario } from "../../interfaces/usuarios";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import api from "../../axios/baseUrl";
+import { useEffect } from "react";
 
 // interface ResApi {
 //   sucesso: boolean;
@@ -23,9 +24,12 @@ const Clientes: React.FC = () => {
   const { data, error, isLoading } = useQuery<Usuario[], Error>({
     queryKey: ["user"],
     queryFn: fetchUser,
+    // refetchInterval: 3000,
+    refetchOnWindowFocus: true,
   });
 
-  if (isLoading) return <p>carregando...</p>;
+  useEffect(() => {}, []);
+
   if (error) return <p>Erro: {error.message}</p>;
 
   return (
@@ -45,15 +49,18 @@ const Clientes: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((usu: Usuario) => (
-              <tr key={usu.id_usu}>
-                <td>{usu.id_usu}</td>
-                <td>{usu.nome_usu}</td>
-                <td>{usu.cpf ?? "nao fornecido"}</td>
-                <td>{usu.email ?? "nao fornecido"}</td>
-                <td> ações</td>
-              </tr>
-            ))}
+            {isLoading && <p>carrregando</p>}
+
+            {data &&
+              data.map((usu: Usuario) => (
+                <tr key={usu.id_usu}>
+                  <td>{usu.id_usu}</td>
+                  <td>{usu.nome_usu}</td>
+                  <td>{usu.cpf ?? "nao fornecido"}</td>
+                  <td>{usu.email ?? "nao fornecido"}</td>
+                  <td> ações</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

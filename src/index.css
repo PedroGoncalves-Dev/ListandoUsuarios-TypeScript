@@ -22,9 +22,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  overflow-x: hidden;
+}
 body {
   min-width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 .app {
