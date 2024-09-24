@@ -2,19 +2,11 @@ import styles from "./clientes.module.css";
 import { Usuario } from "../../interfaces/usuarios";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { Button } from "@/components/ui/button";
-
 import api from "../../axios/baseUrl";
-import { useEffect } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
+import { useEffect, useState } from "react";
+import BotoesAcoes from "@/components/BotaoAcoes/BotoesAcoes";
+import { ModalAtt } from "@/components/ModalAtualizar/ModalAtt";
+import ModalD from "@/components/ModalDesig/ModalDesig";
 
 // interface ResApi {
 //   sucesso: boolean;
@@ -23,6 +15,8 @@ import {
 // }
 
 const Clientes: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const fetchUser = async (): Promise<Usuario[]> => {
     const { data } = await api.get<{
       sucesso: boolean;
@@ -70,29 +64,14 @@ const Clientes: React.FC = () => {
                   <td>{usu.cpf ?? "nao fornecido"}</td>
                   <td>{usu.email ?? "nao fornecido"}</td>
                   <td>
-                    {" "}
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <button className={styles.acoes}>Ações</button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className={styles.menuContent}>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuGroup>
-                          <DropdownMenuItem className={styles.item}>
-                            <span>Editar</span>
-                          </DropdownMenuItem>
-
-                          <DropdownMenuItem className={styles.item}>
-                            <span>Inativar</span>
-                          </DropdownMenuItem>
-                        </DropdownMenuGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    <BotoesAcoes onUpdate={() => setModalOpen(true)} />
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
+
+        <ModalAtt isOpen={modalOpen} onClose={() => setModalOpen(false)} />
       </div>
     </section>
   );

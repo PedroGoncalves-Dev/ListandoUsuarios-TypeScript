@@ -1,0 +1,47 @@
+.acoes {
+  background-color: #3e79e7;
+  width: 80%;
+  border-radius: 8px;
+  color: #ffffff;
+  margin-right: 8px;
+  border: solid 1px #0f0f0f5e;
+  transition: transform 0.1s ease-in, background-color 0.1s ease-in,
+    box-shadow 0.2s ease-in;
+}
+.acoes:hover {
+  transform: scale(1.04);
+  background-color: #0d4dc4;
+  border: #0d4dc4 1px solid;
+  box-shadow: 0px 4px 10px 1px #616161;
+}
+.acoes:focus {
+  outline: none;
+}
+
+.menuItem {
+  color: red;
+}
+.menuContent {
+  background-color: #ffffffd8;
+  width: 100px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.item {
+  transition: font-size 0.1s ease-in;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.item:hover {
+  font-size: 1.1rem;
+  outline: none;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+}
